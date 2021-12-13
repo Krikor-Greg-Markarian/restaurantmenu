@@ -1,34 +1,34 @@
+import Box from "../src/component/Box";
 import cn from "classnames";
+import axios from "axios";
 
-export default function Home() {
+export default function Home(props) {
+  const renderMenuItems = () => {
+    // later on we will add the map function here
+    return <Box title={props.title} />;
+  };
+
   return (
-    <div>
-      <script src='script.js'></script>
-      <section className={cn("pt-12")}>
-        <div className={cn("grid grid-cols-4")}>
-          <div className={cn("col-span-3")}>
-            <div className={cn("border-2 border-black p-4")}>
-              <div className={cn("flex")}>
-                <div className={cn("flex-shrink")}>
-                  <img
-                    className={cn("h-40 w-60")}
-                    src='https://cdn.pixabay.com/photo/2021/12/07/14/00/river-6853339__480.jpg'
-                    alt=''
-                  />
-                </div>
-                <div className={cn("flex-shrink")}>
-                  <div>title:</div>
-                  <div className={cn("pt-28")}>description:</div>
-                </div>
-                <div className={cn("flex-shrink")}>
-                  <div>price:</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <button className={cn("border-2 border-black")}>3D</button>
-        </div>
-      </section>
+    <div className={cn("container mx-auto")}>
+      {/* <section>{renderMenuItems()}</section> */}
+      {props.posts_data.map((item, idx) => (
+        <Box
+          title={item.title}
+          image_url={item.image_url}
+          description={item.description}
+          price={item.price}
+        />
+      ))}
     </div>
   );
+}
+
+export async function getServerSideProps(context) {
+  const response = await axios.get("http://localhost:3000/api/hello");
+
+  return {
+    props: {
+      posts_data: response.data.about,
+    }, // will be passed to the page component as props
+  };
 }
