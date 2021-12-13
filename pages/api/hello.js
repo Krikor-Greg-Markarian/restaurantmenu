@@ -9,7 +9,26 @@ export default function handler(req, res) {
         title: "Title:RestaurantMenu",
         description:
           "Description:Love is friendship that has caught fire. It is quiet understanding.",
-        price: "Price:32.4",
+        price: "Price:32.4$",
+        button: "3D",
+      },
+      {
+        image_url:
+          "https://cdn.pixabay.com/photo/2021/12/02/17/50/bubbles-6841040__480.jpg",
+        title: "Title:RestaurantMenu",
+        description:
+          "Description:Love is friendship that has caught fire. It is quiet understanding.",
+        price: "Price:22.4$",
+        button: "3D",
+      },
+      {
+        image_url:
+          "https://cdn.pixabay.com/photo/2021/12/08/11/01/christmas-6855367__480.jpg",
+        title: "Title:AnotherTitle",
+        description:
+          "Description:Love is friendship that has caught fire. It is quiet understanding.",
+        price: "Price:13.4$",
+        button: "3D",
       },
     ],
   };
